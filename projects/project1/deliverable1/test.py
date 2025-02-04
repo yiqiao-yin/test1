@@ -30,6 +30,7 @@ def rate_url_validity(user_query: str, url: str) -> dict:
     domain_trust = 60  # Placeholder value (Scale: 0-100)
 
     # === Step 3: Content Relevance (Semantic Similarity using Hugging Face) ===
+    # I got the API Key from: Huggingface website > settings > access token
     model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
     similarity_score = util.pytorch_cos_sim(model.encode(user_query), model.encode(page_text)).item() * 100
 
